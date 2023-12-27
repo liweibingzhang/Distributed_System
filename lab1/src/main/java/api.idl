@@ -1,0 +1,19 @@
+module api {
+    typedef sequence<octet> byteArray;
+    interface DataNode {
+        byteArray read(in long block_id);
+        void append(in long block_id, in byteArray bytes);
+        long randomBlockId();
+    };
+    interface NameNode{
+    //TODO: complete the interface design
+        string file_open(in string filepath, in long mode);
+        void file_close(in string filepath);
+        long getRandomDataNodeId();
+        long getDataNodeCount();
+        long getNextAndIncrementDataNodeId();
+        long getNextAndIncrementBlockId(in long DataNodeId);
+        long getNextBlockId(in long DataNodeId);
+        string getLatestMetaData(in string fileDescInfo);
+    };
+};
